@@ -4,5 +4,46 @@
 Home
 {%endblock%}
 {%block body%}
-<p>Hello World</p>
+<div class="container mt-5">
+    <h1 class="text-center">Welcome to Chef's Management</h1>
+    <h2 class="text-center">Choose your dish</h2>
+    <div class="row mt-4">
+        <div class="col-md-3">
+            <div class="card">
+                <img src="/static/images/chocolate.jpg" class="card-img-top" alt="Chocolate">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Tempered Chocolate</h5>
+                    <a href="/chocolate" class="btn btn-primary">Start Cooking!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="/static/images/caramel.jpg" class="card-img-top" alt="Chocolate">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Caramel</h5>
+                    <a href="/page2" class="btn btn-primary">Start Cooking!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="/static/images/chicken.jpg" class="card-img-top" alt="Chocolate">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Chicken</h5>
+                    <a href="/page3" class="btn btn-primary">Start Cooking!</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card">
+                <img src="/static/images/rice.jpg" class="card-img-top" alt="Chocolate">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Rice</h5>
+                    <a href="/page4" class="btn btn-primary">Start Cooking!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {%endblock%}
