@@ -16,8 +16,9 @@ SPOT: Chocolate
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Humidity</h5>
-                    <p class="card-text">This is the first card with some example content.</p>
+                    <h3 class="card-title">Humidity</h3>
+                    
+                    <p class="card-text">Perfect: {{ food_item.humidity }}%.</p>
                     <a href="#" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
@@ -27,8 +28,8 @@ SPOT: Chocolate
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Temperature</h5>
-                    <p class="card-text">This is the second card with different content.</p>
+                    <h3 class="card-title">Temperature</h3>
+                    <p class="card-text">Perfect: {{ food_item.temperature }}°.</p>
                     <a href="#" class="btn btn-primary">Learn More</a>
                 </div>
             </div>
@@ -38,8 +39,8 @@ SPOT: Chocolate
         <div class="col-md-4">
             <div class="card shadow-sm">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Timer</h5>
-                    <p class="card-text">This is the third card with unique content.</p>
+                    <h3 class="card-title">Timer</h3>
+                    <p class="card-text">Cooking Time: {{ food_item.cookingTime }} mins.</p>
                     <a href="#" class="btn btn-primary">Learn More</a>
                 </div>
             </div>

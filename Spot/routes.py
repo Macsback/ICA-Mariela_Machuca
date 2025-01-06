@@ -3,6 +3,7 @@ from google_auth_oauthlib.flow import Flow
 import os
 import requests
 from .mydb import db
+from .mydb import FoodItem
 
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -90,16 +91,20 @@ def register_routes(app):
 
     @app.route('/chocolate')
     def page1():
-        return render_template('chocolate.html')
+        food_item = FoodItem.query.get(1)
+        return render_template('chocolate.html', food_item=food_item)
 
     @app.route('/caramel')
     def page2():
-        return render_template('caramel.html')
+        food_item = FoodItem.query.get(2)
+        return render_template('caramel.html', food_item=food_item)
 
     @app.route('/chicken')
     def page3():
-        return render_template('chicken.html')
+        food_item = FoodItem.query.get(3)
+        return render_template('chicken.html', food_item=food_item)
 
     @app.route('/rice')
     def page4():
-        return render_template('rice.html')
+        food_item = FoodItem.query.get(4)
+        return render_template('rice.html', food_item=food_item)
