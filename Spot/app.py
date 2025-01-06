@@ -87,21 +87,21 @@ def logout():
     return redirect("/")
 
 
-@app.route('/page1')
+@app.route('/chocolate')
 def page1():
-    return render_template('page1.html')
+    return render_template('chocolate.html')
 
-@app.route('/page2')
+@app.route('/caramel')
 def page2():
-    return render_template('page2.html')
+    return render_template('caramel.html')
 
-@app.route('/page3')
+@app.route('/chicken')
 def page3():
-    return render_template('page3.html')
+    return render_template('chicken.html')
 
-@app.route('/page4')
+@app.route('/rice')
 def page4():
-    return render_template('page4.html')
+    return render_template('rice.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
