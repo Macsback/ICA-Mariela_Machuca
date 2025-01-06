@@ -4,6 +4,7 @@ import os
 import requests
 from .mydb import db
 from .mydb import FoodItem
+from .mydb import User
 
 
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
@@ -67,12 +68,22 @@ def register_routes(app):
         session["user"] = {
             "name": userinfo["name"],
             "email": userinfo["email"],
-            "picture": userinfo["picture"],
         }
+
+        user = User.query.filter_by(google_id=userinfo["sub"]).first()
+        if not user:
+            user = User(
+                google_id=userinfo["sub"],
+                name=userinfo["name"],
+                email=userinfo["email"],
+                isAdmin=False
+            )
+            db.session.add(user)
+            db.session.commit()
         return redirect(url_for("home"))
 
     def credentials_to_dict(credentials):
-        return {
+        credDict = {
             "token": credentials.token,
             "refresh_token": credentials.refresh_token,
             "token_uri": credentials.token_uri,
@@ -80,6 +91,7 @@ def register_routes(app):
             "client_secret": credentials.client_secret,
             "scopes": credentials.scopes,
         }
+        return credDict
 
 
     @app.route("/logout")
