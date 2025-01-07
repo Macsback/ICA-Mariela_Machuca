@@ -7,6 +7,7 @@ Home
 <div class="container mt-5">
     <h1 class="text-center">Welcome to Chef's Management</h1>
     <h2 class="text-center">Choose your dish</h2>
+  
     <div class="row mt-4">
         <div class="col-md-3">
             <div class="card">
@@ -44,6 +45,11 @@ Home
                 </div>
             </div>
         </div>
+        {% if user.isAdmin %}
+        <a href="/users" class="btn btn-primary">User Management</a>
+        {% endif %}
     </div>
+ 
 </div>
+
 {%endblock%}
