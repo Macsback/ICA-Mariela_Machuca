@@ -29,7 +29,7 @@ def register_routes(app):
         if "user" not in session:
             return redirect(url_for("login_page"))
         user = session["user"]
-        return render_template("index.html")
+        return render_template("index.html", user=user)
 
     @app.route("/login")
     def login():
@@ -65,10 +65,7 @@ def register_routes(app):
         )
         userinfo = userinfo_response.json()
 
-        session["user"] = {
-            "name": userinfo["name"],
-            "email": userinfo["email"],
-        }
+      
 
         user = User.query.filter_by(google_id=userinfo["sub"]).first()
         if not user:
@@ -80,6 +77,12 @@ def register_routes(app):
             )
             db.session.add(user)
             db.session.commit()
+
+        session["user"] = {
+            "name": userinfo["name"],
+            "email": userinfo["email"],  
+            "isAdmin": user.isAdmin 
+        }
         return redirect(url_for("home"))
 
     def credentials_to_dict(credentials):
@@ -120,3 +123,12 @@ def register_routes(app):
     def page4():
         food_item = FoodItem.query.get(4)
         return render_template('rice.html', food_item=food_item)
+    
+    @app.route("/users")
+    def adminUser():
+        
+        if not session["user"].get("isAdmin"):
+            return render_template('accessDenied.html'),403
+        else:
+            users = User.query.all()
+            return render_template('users.html', users=users)
