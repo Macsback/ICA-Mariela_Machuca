@@ -12,43 +12,48 @@ SPOT: Chocolate
 
     <!-- Cards Section -->
     <div class="row">
-  <!-- Card 1 -->
-  <div class="col-md-4">
-    <div class="card shadow-sm">
-        <div class="card-body text-center">
-            <h3 class="card-title">Humidity</h3>
-            <p class="fs-1">0.0%</p>
-            <p class="card-text">Perfect: {{ food_item.humidity }}%.</p>
-            <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-    </div>
-</div>
-
-<!-- Card 2 -->
-<div class="col-md-4">
-    <div class="card shadow-sm">
-        <div class="card-body text-center">
-            <h3 class="card-title">Temperature</h3>
-            <p class="fs-1">0°</p>
-            <p class="card-text">Perfect: {{ food_item.temperature }}°.</p>
-            <a href="#" class="btn btn-primary">Learn More</a>
-        </div>
-    </div>
-</div>
-
-        <!-- Card 3 -->
+        <!-- Card 1 -->
         <div class="col-md-4">
-            <div class="card shadow-sm">
-                <div class="card-body text-center">
-                    <h3 class="card-title">Timer</h3>
-                    <p id="timer-display" class="fs-1">00:00:00</p>
-                    <p class="card-text">Cooking Time: {{ food_item.cookingTime }} mins.</p>
-                    <button id="start-timer" class="btn btn-primary">Start</button>
-                    <button id="stop-timer" class="btn btn-danger">Stop</button>
-                    <button id="reset-timer" class="btn btn-secondary">Reset</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+           <div class="card shadow-sm">
+               <div class="card-body text-center">
+                   <h3 class="card-title">Humidity</h3>
+                   <p class="fs-1" id="humidity">{{ data.humidity }}%</p>
+                   <p class="card-text" >Perfect: {{ food_item.humidity }}%.</p>
+                   <a href="#" class="btn btn-primary">Learn More</a>
+               </div>
+           </div>
+       </div>
+   
+       <!-- Card 2 -->
+       <div class="col-md-4">
+           <div class="card shadow-sm">
+               <div class="card-body text-center">
+                   <h3 class="card-title">Temperature</h3>
+                   <p class="fs-1" id="temperature">{{ data.temperature_c }}°</p>
+                   <p class="card-text">Perfect: {{ food_item.temperature }}°.</p>
+                   <a href="#" class="btn btn-primary">Learn More</a>
+               </div>
+           </div>
+       </div>
+   
+   
+   
+           <!-- Card 3 -->
+           <div class="col-md-4">
+               <div class="card shadow-sm">
+                   <div class="card-body text-center">
+                       <h3 class="card-title">Timer</h3>
+                       <p id="timer-display" class="fs-1">00:00:00</p>
+                       <p class="card-text">Cooking Time: {{ food_item.cookingTime }} mins.</p>
+                       <button id="start-timer" class="btn btn-primary">Start</button>
+                       <button id="stop-timer" class="btn btn-danger">Stop</button>
+                       <button id="reset-timer" class="btn btn-secondary">Reset</button>
+                   </div>
+               </div>
+           </div>
+       </div>
+   </div>
+   
+   <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.34.0.min.js"></script>
+   <script src="{{ url_for('static', filename='js/pubnub.js') }}"></script>
 {%endblock%}

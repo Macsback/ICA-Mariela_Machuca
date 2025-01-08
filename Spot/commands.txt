@@ -1,3 +1,5 @@
 To initialize the app: python -m Spot.app
 
+publish key = pub-c-a1bfc69b-5a49-4f45-9a35-d0177b206c7e
+Subscribe key = sub-c-bd17ee05-352b-4f4b-9a74-d3f91598f507
 
