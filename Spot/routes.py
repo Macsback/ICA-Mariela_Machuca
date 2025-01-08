@@ -6,7 +6,32 @@ from .mydb import db
 from .mydb import FoodItem
 from .mydb import User
 
+from pubnub.pnconfiguration import PNConfiguration
+from pubnub.pubnub import PubNub
+from pubnub.callbacks import SubscribeCallback
+import threading
 
+#Pubnub setup
+
+# PubNub Configuration
+pnconfig = PNConfiguration()
+pnconfig.subscribe_key = "sub-c-bd17ee05-352b-4f4b-9a74-d3f91598f507"  # Replace with PubNub subscribe key
+pnconfig.publish_key = "pub-c-a1bfc69b-5a49-4f45-9a35-d0177b206c7e"      # Replace with PubNub publish key
+pnconfig.uuid = "website"
+pubnub = PubNub(pnconfig)
+
+sensor_data = {"temperature_c": 0,  "humidity": 0}
+
+class SensorListener(SubscribeCallback):
+    def message(self, pubnub, message):
+        global sensor_data
+        sensor_data.update(message.message)
+
+# Subscribe to the PubNub channel
+pubnub.add_listener(SensorListener())
+pubnub.subscribe().channels("sensor_data").execute()
+
+# Google Setup
 os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
 GOOGLE_CLIENT_SECRETS_FILE = "/Users/mac/Documents/GitHub/ICA-Mariela_Machuca/Spot/client_secret.json"
@@ -107,22 +132,22 @@ def register_routes(app):
     @app.route('/chocolate')
     def page1():
         food_item = FoodItem.query.get(1)
-        return render_template('chocolate.html', food_item=food_item)
+        return render_template('chocolate.html', food_item=food_item, data=sensor_data)
 
     @app.route('/caramel')
     def page2():
         food_item = FoodItem.query.get(2)
-        return render_template('caramel.html', food_item=food_item)
+        return render_template('caramel.html', food_item=food_item, data=sensor_data)
 
     @app.route('/chicken')
     def page3():
         food_item = FoodItem.query.get(3)
-        return render_template('chicken.html', food_item=food_item)
+        return render_template('chicken.html', food_item=food_item, data=sensor_data)
 
     @app.route('/rice')
     def page4():
         food_item = FoodItem.query.get(4)
-        return render_template('rice.html', food_item=food_item)
+        return render_template('rice.html', food_item=food_item, data=sensor_data)
     
     @app.route("/users")
     def adminUser():
