@@ -2,6 +2,9 @@
 
 Sadly the aws domain can only show the login page and do the google login. But can't go further than that because of an SQL connection issue. To see the whole app please run the files locally. 
 
+# AWS Domain
+http://maciotca.online/
+
 # Run The app
 
 ``` In terminal
