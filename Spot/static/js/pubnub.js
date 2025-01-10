@@ -59,6 +59,7 @@ function stopChronometer() {
 function resetChronometer() {
     stopChronometer();
     chronometerTime = 0;
+    document.getElementById("messageDisplay").innerText = " "
     document.getElementById("timer").innerText = "00:00:00";
 }
 
@@ -99,6 +100,8 @@ chronometerTime = chronometerTime/60;
                 console.log("Alert message sent:", response);
             }
         });
+
+        document.getElementById("messageDisplay").innerText = "Food is Ready!"
     }
 }
 document.getElementById("start-timer").addEventListener("click", startChronometer);
